@@ -9,7 +9,7 @@ public class ConnectionUtility {
 		//Getting our Database Connection from the System Environment Variables
 		
 		//Fix LATER
-		//String url = System.getenv();
+		//String url = System.getenv(MOONBASE_DB_CONNECTION);
 		
 		//A Try Block for Connecting to our Database
 		try {

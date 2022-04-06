@@ -14,11 +14,11 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 	//Connection conn = new ConnectionUtilities();
 	PreparedStatement ps;
 	ResultSet rs;
+	String selectAllEmployees = "SELECT * FROM employees";
 	
 	public ArrayList<Employee> getAllEmployees() {
 		ArrayList<Employee> empList = new ArrayList<Employee>();
 		try (Connection conn = ConnectionUtility.createConnection();) {
-			String selectAllEmployees = "SELECT * FROM employees";
 			ps = conn.prepareStatement(selectAllEmployees);
 			rs = ps.executeQuery();
 			Employee emp;
@@ -26,9 +26,10 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 				int empId = rs.getInt("employee_id");
 				String empRole = rs.getString("employee_role");
 				String empName = rs.getString("employee_name");
+				String empPass = rs.getString("employee_passsword");
 				String empStation = rs.getString("employee_station");
 				boolean empStatus = rs.getBoolean("employee_status");
-				emp = new Employee(empId, empRole, empName, empStation, empStatus);
+				emp = new Employee(empId, empRole, empName, empPass, empStation, empStatus);
 				empList.add(emp);
 			}
 			rs.close();ps.close();
@@ -37,4 +38,25 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 		}
 		return empList;
 	};
+	
+	public boolean loginEmployee(String loginName, String loginPass) {
+		boolean match = false;
+		try (Connection conn = ConnectionUtility.createConnection();) {
+			ps = conn.prepareStatement(selectAllEmployees);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				String empName = rs.getString("employee_name");
+				String empPass = rs.getString("employee_passsword");
+				if (empName.equals(loginName) && empPass.equals(loginPass)) {
+					match = true;
+					break;
+				}
+			}
+			rs.close(); ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return match;
+	}
 }

@@ -4,6 +4,7 @@ public class Employee {
 	int empId;
 	String empRole;
 	String empName;
+	String empPass;
 	String empStation;
 	boolean empStatus;
 	
@@ -11,11 +12,12 @@ public class Employee {
 	public Employee() {
 		super();
 	}
-	public Employee(int empId, String empRole, String empName, String empStation, boolean empStatus) {
+	public Employee(int empId, String empRole, String empName, String empPass, String empStation, boolean empStatus) {
 		super();
 		this.empId = empId;
 		this.empRole = empRole;
 		this.empName = empName;
+		this.empPass = empPass;
 		this.empStation = empStation;
 		this.empStatus = empStatus;
 	}
@@ -29,6 +31,9 @@ public class Employee {
 	}
 	public String getEmpName() {
 		return empName;
+	}
+	public String getEmpPass() {
+		return empPass;
 	}
 	public String getEmpStation() {
 		return empStation;
@@ -47,6 +52,9 @@ public class Employee {
 	public void setEmpName(String empName) {
 		this.empName = empName;
 	}
+	public void setEmpPasss(String empPass) {
+		this.empName = empPass;
+	}
 	public void setEmpStation(String empStation) {
 		this.empStation = empStation;
 	}
@@ -57,7 +65,7 @@ public class Employee {
 	//To String
 	@Override
 	public String toString() {
-		return "Employee [empId=" + empId + ", empRole=" + empRole + ", empName=" + empName + ", empStation="
+		return "Employee [empId=" + empId + ", empRole=" + empRole + ", empName=" + empName + ", empPass=" + empPass + ", empStation="
 				+ empStation + ", empStatus=" + empStatus + "]";
 	}
 }

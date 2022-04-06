@@ -7,4 +7,5 @@ import revature.d33gz.entities.Employee;
 public interface EmployeeDAO {
 	//R
 	ArrayList<Employee> getAllEmployees();
+	boolean loginEmployee(String loginName, String loginPass);
 }
