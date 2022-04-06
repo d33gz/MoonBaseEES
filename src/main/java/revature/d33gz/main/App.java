@@ -3,10 +3,15 @@ package revature.d33gz.main;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import revature.d33gz.controllers.EmployeeController;
+import revature.d33gz.controllers.ExpenseController;
 import revature.d33gz.dao.EmployeeDAO;
+import revature.d33gz.dao.ExpenseDAO;
 import revature.d33gz.dao.PostgresEmployeeDAO;
+import revature.d33gz.dao.PostgresExpenseDAO;
 import revature.d33gz.services.EmployeeService;
 import revature.d33gz.services.EmployeeServiceImplement;
+import revature.d33gz.services.ExpenseService;
+import revature.d33gz.services.ExpenseServiceImplement;
 
 public class App {
 	public static void main(String[] args) {
@@ -15,12 +20,16 @@ public class App {
 		
 		////Prepare our Layers
 		EmployeeDAO empdao = new PostgresEmployeeDAO();
+		ExpenseDAO expdao = new PostgresExpenseDAO();
 		EmployeeService empserv = new EmployeeServiceImplement(empdao);
+		ExpenseService expserv = new ExpenseServiceImplement(expdao);
 		EmployeeController employeeController = new EmployeeController(empdao, empserv);
+		ExpenseController expenseController = new ExpenseController(expdao, expserv);
 		
 		//Our Endpoints
 		app.get("/allEmployees", employeeController.getAllEmployees);
 		app.post("/login", employeeController.loginEmployee);
+		app.post("/newExpense", expenseController.newExpenseRequest);
 		
 		//Starting our App
 		app.start(1969);

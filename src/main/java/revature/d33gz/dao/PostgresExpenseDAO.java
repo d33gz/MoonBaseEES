@@ -1,16 +1,19 @@
 package revature.d33gz.dao;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class PostgresExpenseDAO {
+import revature.d33gz.entities.ExpenseRequest;
+import revature.d33gz.utilities.ConnectionUtility;
+
+public class PostgresExpenseDAO implements ExpenseDAO {
 	//Later
 	//Connection conn = new ConnectionUtilities();
 	PreparedStatement ps;
 	ResultSet rs;
-		
-		
-		
+	
 //	public Handler getAllExpenses = ctx -> {
 //		ArrayList<Employee> empList = new ArrayList<Employee>();
 //		try (Connection conn = ConnectionUtility.createConnection();) {
@@ -33,4 +36,21 @@ public class PostgresExpenseDAO {
 //		}
 //		ctx.json(empList);
 //	};
+	
+	public void newExpenseRequest(ExpenseRequest expReq) {
+		try (Connection conn = ConnectionUtility.createConnection();) {
+			String newExpense = "INSERT INTO expense_requests VALUES (?,?,?)";
+			ps = conn.prepareStatement(null);
+			rs = ps.executeQuery();
+			ps.setString(0, expReq.getRequestTitle());
+			ps.setString(1, expReq.getRequestDescription());
+			ps.setInt(2, expReq.getRequestCost());
+			ps.execute();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

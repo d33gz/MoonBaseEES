@@ -1,5 +1,4 @@
 async function callLogin(nameInput, passInput) {
-	alert('Now this is podracing!');
 	let user = {
 		empName: nameInput,
 		empPass: passInput
@@ -16,9 +15,6 @@ async function callLogin(nameInput, passInput) {
 	if (result === "Good Good not Bad")
 		window.location.href = "./success.html";
 };
-
-
-
 
 function validateLogin() {
 	let nameInput = document.getElementById('userName').value;
