@@ -1,4 +1,4 @@
-async function callLogin(nameInput, passInput) {
+callLogin = async (nameInput, passInput) => {
 	let user = {
 		empName: nameInput,
 		empPass: passInput
@@ -11,14 +11,14 @@ async function callLogin(nameInput, passInput) {
 		body: JSON.stringify(user)
 	});
 	let result = await response.text();
-	alert(result);
 	if (result === "Good Good not Bad")
-		window.location.href = "./success.html";
+		window.location.href = "../pages/employeePage.html";
+	if (result === "Wow quite Impressive")
+		window.location.href = "../pages/managerPage.html";
 };
 
 function validateLogin() {
 	let nameInput = document.getElementById('userName').value;
 	let passInput = document.getElementById('password').value;
-	alert('validating!!!');
 	callLogin(nameInput, passInput);
 };

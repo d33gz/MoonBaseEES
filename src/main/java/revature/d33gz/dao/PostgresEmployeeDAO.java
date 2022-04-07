@@ -15,6 +15,7 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 	PreparedStatement ps;
 	ResultSet rs;
 	String selectAllEmployees = "SELECT * FROM employees";
+	String selectEmployeeName = "SELECT employee_name FROM employees WHERE employee_id=?";
 	
 	public ArrayList<Employee> getAllEmployees() {
 		ArrayList<Employee> empList = new ArrayList<Employee>();

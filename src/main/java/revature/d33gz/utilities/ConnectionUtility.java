@@ -9,11 +9,11 @@ public class ConnectionUtility {
 		//Getting our Database Connection from the System Environment Variables
 		
 		//Fix LATER
-		//String url = System.getenv(MOONBASE_DB_CONNECTION);
+		String url = System.getenv("MOONBASE_DB_CONNECTION");
 		
 		//A Try Block for Connecting to our Database
 		try {
-			Connection conn = DriverManager.getConnection("jdbc:postgresql://database-revature-demo.c4n9s3foflfi.us-east-1.rds.amazonaws.com/MoonBaseEES?user=postgres&password=tr33fire");
+			Connection conn = DriverManager.getConnection(url);
 			return conn;
 		} catch (SQLException e) {
 			e.printStackTrace();

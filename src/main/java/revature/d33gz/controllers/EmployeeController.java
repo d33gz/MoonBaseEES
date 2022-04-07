@@ -16,9 +16,13 @@ public class EmployeeController {
 	}
 	
 	public Handler getAllEmployees = ctx -> {
-		System.out.println("what is going on " + ctx.userAgent());
-		System.out.println("uhhhh..." + ctx.sessionAttributeMap());
 		ctx.json(this.empdao.getAllEmployees());
+	};
+	
+	public Handler getName = ctx -> {
+		System.out.println("okay in the handler\n" + ctx.sessionAttributeMap());
+		String username = ctx.sessionAttribute("username");
+		ctx.json(username);
 	};
 	
 	public Handler loginEmployee = ctx -> {

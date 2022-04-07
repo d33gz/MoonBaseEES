@@ -28,6 +28,7 @@ public class App {
 		
 		//Our Endpoints
 		app.get("/allEmployees", employeeController.getAllEmployees);
+		app.get("/getName", employeeController.getName);
 		app.post("/login", employeeController.loginEmployee);
 		app.post("/newExpense", expenseController.newExpenseRequest);
 		

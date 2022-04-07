@@ -10,7 +10,7 @@ public class ExpenseServiceImplement implements ExpenseService {
 		this.expdao = expenseDAO;
 	}
 	
-	public void newExpenseRequest(ExpenseRequest expReq) {
-		this.expdao.newExpenseRequest(expReq);
+	public void newExpenseRequest(ExpenseRequest expReq, int requesterId) {
+		this.expdao.newExpenseRequest(expReq, requesterId);
 	}
 }
