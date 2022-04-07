@@ -1,5 +1,7 @@
-async function callNewExpense(reqTitle, reqDesc, reqCost) {
+callNewExpense = async (reqDate, reqTitle, reqDesc, reqCost) => {
+	alert("Getting somewhere...");
 	let newExpense = {
+		requestDate: reqDate,
 		requestTitle: reqTitle,
 		requestDescription: reqDesc,
 		requestCost: reqCost
@@ -15,13 +17,24 @@ async function callNewExpense(reqTitle, reqDesc, reqCost) {
 	alert(result);
 };
 
-
-
-
-function newExpenseLogin() {
+newExpenseRequest = () => {
+	let reqDate = document.getElementById('requestDate').innerHTML;
 	let reqTitle = document.getElementById('requestTitle').value;
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
 	alert('inputting!!!');
-	callNewExpense(reqTitle, reqDesc, reqCost);
+	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
+};
+
+spaceDate = () => {
+	let newExpenseElement = document.getElementById('generatedList-newExpense');
+	const date = new Date();
+	let currentDay = date.getDay();
+	let currentMonth = date.getMonth();
+	let spaceYear = date.getFullYear() + 64;
+	let spaceDate = `${currentDay}/${currentMonth}/${spaceYear}`;
+	let generatedDate = document.createElement('li');
+	generatedDate.setAttribute('id', 'requestDate');
+	generatedDate.innerHTML = spaceDate;
+	newExpenseElement.appendChild(generatedDate);
 };

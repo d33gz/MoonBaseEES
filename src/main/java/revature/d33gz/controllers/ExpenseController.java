@@ -15,9 +15,10 @@ public class ExpenseController {
 	}
 
 	public Handler newExpenseRequest = ctx -> {
+		System.out.println("Here's what we got! " + ctx.sessionAttributeMap());
 		ExpenseRequest muhExpense = ctx.bodyAsClass(ExpenseRequest.class);
 		this.expserv.newExpenseRequest(muhExpense);
-		
-		ctx.json(ctx.body());
+		ctx.result("good job!");
+		//ctx.json(ctx.body());
 	};
 }

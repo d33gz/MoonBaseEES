@@ -39,13 +39,16 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 	
 	public void newExpenseRequest(ExpenseRequest expReq) {
 		try (Connection conn = ConnectionUtility.createConnection();) {
-			String newExpense = "INSERT INTO expense_requests VALUES (?,?,?)";
-			ps = conn.prepareStatement(null);
+			String newExpense = "INSERT INTO expense_requests (request_date, request_title, request_description, request_cost) VALUES (?,?,?,?)";
+			ps = conn.prepareStatement(newExpense);
+			ps.setString(1, expReq.getRequestDate());
+			ps.setString(2, expReq.getRequestTitle());
+			ps.setString(3, expReq.getRequestDescription());
+			ps.setInt(4, expReq.getRequestCost());
 			rs = ps.executeQuery();
-			ps.setString(0, expReq.getRequestTitle());
-			ps.setString(1, expReq.getRequestDescription());
-			ps.setInt(2, expReq.getRequestCost());
-			ps.execute();
+			//User id??
+			//Date??
+			//Status??
 			ps.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

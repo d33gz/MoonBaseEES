@@ -12,12 +12,13 @@ public class EmployeeServiceImplement implements EmployeeService {
 	}
 	
 	//Login
-	public boolean loginEmployee(Employee loginInputs) {
+	public Employee loginEmployee(Employee loginInputs) {
+		Employee invalidEmployee = new Employee(-1);
 		String loginName = loginInputs.getEmpName();
 		String loginPass = loginInputs.getEmpPass();
 		if (loginName.length() > 0 && loginPass.length() > 0)
 			return this.empdao.loginEmployee(loginName, loginPass);
 		else
-			return false;
+			return invalidEmployee;
 	}
 }

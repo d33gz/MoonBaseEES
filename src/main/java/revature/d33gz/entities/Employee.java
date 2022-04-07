@@ -12,6 +12,10 @@ public class Employee {
 	public Employee() {
 		super();
 	}
+	public Employee(int empId) {
+		super();
+		this.empId = empId;
+	}
 	public Employee(int empId, String empRole, String empName, String empPass, String empStation, boolean empStatus) {
 		super();
 		this.empId = empId;
