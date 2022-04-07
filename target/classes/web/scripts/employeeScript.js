@@ -18,10 +18,10 @@ getMyExpenses = () => {
 };
 
 loadEmployeePage = () => {
-	let employeeName = getMyEmployee();
+	//let employeeName = getMyEmployee();
 	let expenseList = getMyExpenses();
-	let employeeElement = document.getElementById('employeeName');
-	employeeElement.innerHTML = employeeName;
+	//let employeeElement = document.getElementById('employeeName');
+	//employeeElement.innerHTML = employeeName;
 	console.log(expenseList);
 	/*
 	const expensesSection = document.getElementById('muhExpenses');

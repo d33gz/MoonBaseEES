@@ -3,10 +3,11 @@
 	<head>
 		<title>Testing MoonBase Database</title>
 		<!--<link rel="stylesheet" href="styles/style.css"/>-->
+		<script src="../scripts/userScript.js"></script>
 		<script src="../scripts/employeeScript.js"></script>
-	<body onload="loadEmployeePage()">
+	<body onload="loadEmployeePage(), getName()">
 		<p>EmployeePage</p>
-		<h3 id="employeeName"></h3>
+		<h3 id="userName"></h3>
 		<div id="muhExpenses"></div>
 		<a href="../pages/newExpense.html"><button type="button">Add a new Expense Request</button></a>
 		<a href="../pages/loginPage.html"><button type="button" onclick="logout()">Logout</button></a>
