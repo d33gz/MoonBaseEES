@@ -25,7 +25,7 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 				int empId = rs.getInt("employee_id");
 				String empRole = rs.getString("employee_role");
 				String empName = rs.getString("employee_name");
-				String empPass = rs.getString("employee_passsword");
+				String empPass = rs.getString("employee_password");
 				String empStation = rs.getString("employee_station");
 				boolean empStatus = rs.getBoolean("employee_status");
 				emp = new Employee(empId, empRole, empName, empPass, empStation, empStatus);
@@ -45,7 +45,7 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				String empName = rs.getString("employee_name");
-				String empPass = rs.getString("employee_passsword");
+				String empPass = rs.getString("employee_password");
 				if (empName.equals(loginName) && empPass.equals(loginPass)) {
 					user.setEmpId(rs.getInt("employee_id"));
 					user.setEmpRole(rs.getString("employee_role"));
