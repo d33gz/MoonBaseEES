@@ -79,7 +79,6 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 	public ExpenseRequest reviewExpense(int requestId) {
 		ExpenseRequest expReq = new ExpenseRequest();
 		try (Connection conn = ConnectionUtility.createConnection();) {
-			System.out.println("Did we make it? " + requestId);
 			ps = conn.prepareStatement(selectExpense);
 			ps.setInt(1, requestId);
 			rs = ps.executeQuery();
@@ -94,7 +93,6 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Yeah we did it " + expReq);
 		return expReq;
 	};
 }

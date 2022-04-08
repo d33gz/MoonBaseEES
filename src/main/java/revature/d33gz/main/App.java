@@ -24,7 +24,7 @@ public class App {
 		EmployeeService empserv = new EmployeeServiceImplement(empdao);
 		ExpenseService expserv = new ExpenseServiceImplement(expdao);
 		EmployeeController employeeController = new EmployeeController(empdao, empserv);
-		ExpenseController expenseController = new ExpenseController(expdao, expserv);
+		ExpenseController expenseController = new ExpenseController(expserv);
 		
 		//Our Endpoints with Functionality
 		app.get("/allEmployees", employeeController.getAllEmployees);
@@ -34,6 +34,7 @@ public class App {
 		app.get("/userExpenses", expenseController.getUserExpenses);
 		app.post("/newExpense", expenseController.newExpenseRequest);
 		app.get("/allExpenses", expenseController.getAllExpenses);
+		app.post("/setExpense", expenseController.setExpense);
 		app.post("/reviewExpense", expenseController.reviewExpense);
 		
 		//Starting our App
