@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import revature.d33gz.controllers.EmployeeController;
 import revature.d33gz.controllers.ExpenseController;
+import revature.d33gz.controllers.LoginController;
 import revature.d33gz.dao.EmployeeDAO;
 import revature.d33gz.dao.ExpenseDAO;
 import revature.d33gz.dao.PostgresEmployeeDAO;
@@ -26,10 +27,16 @@ public class App {
 		EmployeeController employeeController = new EmployeeController(empdao, empserv);
 		ExpenseController expenseController = new ExpenseController(expdao, expserv);
 		
-		//Our Endpoints
+		//Pages
+		app.get("/pages/employeePage.html", LoginController.verification);
+		app.get("/pages/managerPage.html", LoginController.verification);
+		app.get("/pages/newExpense.html", LoginController.verification);
+		
+		//Our Endpoints with Functionality
 		app.get("/allEmployees", employeeController.getAllEmployees);
 		app.get("/getName", employeeController.getName);
 		app.post("/login", employeeController.loginEmployee);
+		app.get("/logout", employeeController.logoutEmployee);
 		app.get("/allExpenses", expenseController.getAllExpenses);
 		app.get("/userExpenses", expenseController.getUserExpenses);
 		app.post("/newExpense", expenseController.newExpenseRequest);

@@ -20,7 +20,6 @@ public class EmployeeController {
 	};
 	
 	public Handler getName = ctx -> {
-		System.out.println("okay in the handler\n" + ctx.sessionAttributeMap());
 		String username = ctx.sessionAttribute("username");
 		ctx.json(username);
 	};
@@ -40,4 +39,9 @@ public class EmployeeController {
 			ctx.json("Wow quite Impressive");
 		}
 	};
+	public Handler logoutEmployee = ctx -> {
+		ctx.sessionAttribute("ID", -1);
+		ctx.redirect("/index.html");
+	};
+	
 }
