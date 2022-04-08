@@ -1,72 +1,78 @@
 package revature.d33gz.entities;
 
 public class ExpenseRequest {
-	int requestId;
-	String requestDate;
-	int requestCost;
-	String requestTitle;
-	String requestDescription;
-	boolean requestStatus;
+	int reqId;
+	String reqDate;
+	int reqCost;
+	String reqTitle;
+	String reqDesc;
+	boolean reqStatus;
 	
 	//Constructors
 	public ExpenseRequest() {
 		super();
 	}
-	public ExpenseRequest(int requestId, String requestDate, int requestCost, String requestTitle, String requestDescription, boolean requestStatus) {
+	public ExpenseRequest(boolean reqStatus, String reqTitle, String reqDate) {
 		super();
-		this.requestId = requestId;
-		this.requestDate = requestDate;
-		this.requestCost = requestCost;
-		this.requestTitle = requestTitle;
-		this.requestDescription = requestDescription;
-		this.requestStatus = requestStatus;
+		this.reqStatus = reqStatus;
+		this.reqTitle = reqTitle;
+		this.reqDate = reqDate;
+	}
+	public ExpenseRequest(int reqId, String reqDate, int reqCost, String reqTitle, String reqDesc, boolean reqStatus) {
+		super();
+		this.reqId = reqId;
+		this.reqDate = reqDate;
+		this.reqCost = reqCost;
+		this.reqTitle = reqTitle;
+		this.reqDesc = reqDesc;
+		this.reqStatus = reqStatus;
 	}
 	
 	//Getters
-	public int getRequestId() {
-		return requestId;
+	public int getReqId() {
+		return reqId;
 	}
-	public String getRequestDate() {
-		return requestDate;
+	public String getReqDate() {
+		return reqDate;
 	}
-	public int getRequestCost() {
-		return requestCost;
+	public int getReqCost() {
+		return reqCost;
 	}
-	public String getRequestTitle() {
-		return requestTitle;
+	public String getReqTitle() {
+		return reqTitle;
 	}
-	public String getRequestDescription() {
-		return requestDescription;
+	public String getReqDesc() {
+		return reqDesc;
 	}
-	public boolean getRequestStatus() {
-		return requestStatus;
+	public boolean getReqStatus() {
+		return reqStatus;
 	}
 	
 	//Setters
-	public void setRequestId(int requestId) {
-		this.requestId = requestId;
+	public void setReqId(int reqId) {
+		this.reqId = reqId;
 	}
-	public void setRequestDate(String requestDate) {
-		this.requestDate = requestDate;
+	public void setReqDate(String reqDate) {
+		this.reqDate = reqDate;
 	}
-	public void setRequestCost(int requestCost) {
-		this.requestCost = requestCost;
+	public void setReqCost(int reqCost) {
+		this.reqCost = reqCost;
 	}
-	public void setRequestTitle(String requestTitle) {
-		this.requestTitle = requestTitle;
+	public void setReqTitle(String reqTitle) {
+		this.reqTitle = reqTitle;
 	}
-	public void setRequestDescription(String requestDescription) {
-		this.requestDescription = requestDescription;
+	public void setReqDesc(String reqDesc) {
+		this.reqDesc = reqDesc;
 	}
-	public void setRequestStatus(boolean requestStatus) {
-		this.requestStatus = requestStatus;
+	public void setReqStatus(boolean reqStatus) {
+		this.reqStatus = reqStatus;
 	}
 	
 	//To String
 	@Override
 	public String toString() {
-		return "ExpenseRequest [requestId=" + requestId + ", requestDate=" + requestDate + ", requestCost="
-				+ requestCost + ", requestTitle=" + requestTitle + ", requestDescription=" + requestDescription
-				+ ", requestStatus=" + requestStatus + "]";
+		return "ExpenseRequest [reqId=" + reqId + ", reqDate=" + reqDate + ", reqCost="
+				+ reqCost + ", reqTitle=" + reqTitle + ", reqDesc=" + reqDesc
+				+ ", reqStatus=" + reqStatus + "]";
 	}
 }

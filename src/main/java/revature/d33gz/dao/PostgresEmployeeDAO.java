@@ -10,8 +10,6 @@ import revature.d33gz.entities.Employee;
 import revature.d33gz.utilities.ConnectionUtility;
 
 public class PostgresEmployeeDAO implements EmployeeDAO {
-	//Later
-	//Connection conn = new ConnectionUtilities();
 	PreparedStatement ps;
 	ResultSet rs;
 	String selectAllEmployees = "SELECT * FROM employees";

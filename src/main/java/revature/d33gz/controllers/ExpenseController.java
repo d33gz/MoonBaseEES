@@ -14,6 +14,15 @@ public class ExpenseController {
 		this.expserv = expenseService;
 	}
 
+	public Handler getAllExpenses = ctx -> {
+		ctx.json(this.expserv.getAllExpenses());
+	};
+	
+	public Handler getUserExpenses = ctx -> {
+		int userId = ctx.sessionAttribute("ID");
+		ctx.json(this.expserv.getUserExpenses(userId));
+	};
+	
 	public Handler newExpenseRequest = ctx -> {
 		System.out.println("Here's what we got! " + ctx.sessionAttributeMap());
 		int requesterId = ctx.sessionAttribute("ID");
