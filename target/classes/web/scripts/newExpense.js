@@ -1,5 +1,4 @@
 callNewExpense = async (reqDate, reqTitle, reqDesc, reqCost) => {
-	alert("Getting somewhere...");
 	let newExpense = {
 		reqDate: reqDate,
 		reqTitle: reqTitle,
@@ -22,7 +21,6 @@ newExpenseRequest = () => {
 	let reqTitle = document.getElementById('requestTitle').value;
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
-	alert('inputting!!!');
 	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
 };
 

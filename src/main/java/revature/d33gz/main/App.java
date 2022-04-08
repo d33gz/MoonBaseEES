@@ -31,9 +31,10 @@ public class App {
 		app.get("/getName", employeeController.getName);
 		app.post("/login", employeeController.loginEmployee);
 		app.get("/logout", employeeController.logoutEmployee);
-		app.get("/allExpenses", expenseController.getAllExpenses);
 		app.get("/userExpenses", expenseController.getUserExpenses);
 		app.post("/newExpense", expenseController.newExpenseRequest);
+		app.get("/allExpenses", expenseController.getAllExpenses);
+		app.post("/reviewExpense", expenseController.reviewExpense);
 		
 		//Starting our App
 		app.start(1969);

@@ -27,7 +27,6 @@ public class EmployeeController {
 	public Handler loginEmployee = ctx -> {
 		Employee inputs = ctx.bodyAsClass(Employee.class);
 		Employee user = this.empserv.loginEmployee(inputs);
-		System.out.println("Why are you like this sometimes?? " + user);
 		if (user.getEmpId() == -1)
 			ctx.json("Bad Bad not Good");
 		else if (user.getEmpRole().equals("Staff")) {

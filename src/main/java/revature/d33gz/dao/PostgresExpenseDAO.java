@@ -12,8 +12,9 @@ import revature.d33gz.utilities.ConnectionUtility;
 public class PostgresExpenseDAO implements ExpenseDAO {
 	PreparedStatement ps;
 	ResultSet rs;
-	String selectAllExpenses = "SELECT request_status, request_title, request_date FROM expense_requests";
-	String selectUserExpenses = "SELECT request_status, request_title, request_date FROM expense_requests WHERE id_of_requester=?";
+	String selectUserExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE id_of_requester=?";
+	String selectAllExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests";
+	String selectExpense = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE request_id=?";
 
 	//Create
 	public void newExpenseRequest(ExpenseRequest expReq, int requesterId) {
@@ -34,25 +35,6 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 	}
 	
 	//Read
-	public ArrayList<ExpenseRequest> getAllExpenses() {
-		ArrayList<ExpenseRequest> expReqList = new ArrayList<ExpenseRequest>();
-		try (Connection conn = ConnectionUtility.createConnection();) {
-			ps = conn.prepareStatement(selectAllExpenses);
-			rs = ps.executeQuery();
-			ExpenseRequest expReq;
-			while (rs.next()) {
-				boolean reqStatus = rs.getBoolean("request_status");
-				String reqTitle = rs.getString("request_title");
-				String reqDate = rs.getString("request_date");
-				expReq = new ExpenseRequest(reqStatus, reqTitle, reqDate);
-				expReqList.add(expReq);
-			}
-			rs.close();ps.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return expReqList;
-	};
 	public ArrayList<ExpenseRequest> getUserExpenses(int userId) {
 		ArrayList<ExpenseRequest> expReqList = new ArrayList<ExpenseRequest>();
 		try (Connection conn = ConnectionUtility.createConnection();) {
@@ -61,10 +43,11 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 			rs = ps.executeQuery();
 			ExpenseRequest expReq;
 			while (rs.next()) {
+				int reqId = rs.getInt("request_id");
 				boolean reqStatus = rs.getBoolean("request_status");
 				String reqTitle = rs.getString("request_title");
 				String reqDate = rs.getString("request_date");
-				expReq = new ExpenseRequest(reqStatus, reqTitle, reqDate);
+				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate);
 				expReqList.add(expReq);
 			}
 			rs.close();ps.close();
@@ -72,5 +55,46 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 			e.printStackTrace();
 		}
 		return expReqList;
+	};
+	public ArrayList<ExpenseRequest> getAllExpenses() {
+		ArrayList<ExpenseRequest> expReqList = new ArrayList<ExpenseRequest>();
+		try (Connection conn = ConnectionUtility.createConnection();) {
+			ps = conn.prepareStatement(selectAllExpenses);
+			rs = ps.executeQuery();
+			ExpenseRequest expReq;
+			while (rs.next()) {
+				int reqId = rs.getInt("request_id");
+				boolean reqStatus = rs.getBoolean("request_status");
+				String reqTitle = rs.getString("request_title");
+				String reqDate = rs.getString("request_date");
+				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate);
+				expReqList.add(expReq);
+			}
+			rs.close();ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return expReqList;
+	};
+	public ExpenseRequest reviewExpense(int requestId) {
+		ExpenseRequest expReq = new ExpenseRequest();
+		try (Connection conn = ConnectionUtility.createConnection();) {
+			System.out.println("Did we make it? " + requestId);
+			ps = conn.prepareStatement(selectExpense);
+			ps.setInt(1, requestId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				int reqId = rs.getInt("request_id");
+				boolean reqStatus = rs.getBoolean("request_status");
+				String reqTitle = rs.getString("request_title");
+				String reqDate = rs.getString("request_date");
+				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate);
+			}
+			rs.close();ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Yeah we did it " + expReq);
+		return expReq;
 	};
 }

@@ -12,8 +12,9 @@ public class ExpenseRequest {
 	public ExpenseRequest() {
 		super();
 	}
-	public ExpenseRequest(boolean reqStatus, String reqTitle, String reqDate) {
+	public ExpenseRequest(int reqId, boolean reqStatus, String reqTitle, String reqDate) {
 		super();
+		this.reqId = reqId;
 		this.reqStatus = reqStatus;
 		this.reqTitle = reqTitle;
 		this.reqDate = reqDate;
