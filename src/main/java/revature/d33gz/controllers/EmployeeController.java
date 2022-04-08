@@ -27,6 +27,7 @@ public class EmployeeController {
 	public Handler loginEmployee = ctx -> {
 		Employee inputs = ctx.bodyAsClass(Employee.class);
 		Employee user = this.empserv.loginEmployee(inputs);
+		System.out.println("Why are you like this sometimes?? " + user);
 		if (user.getEmpId() == -1)
 			ctx.json("Bad Bad not Good");
 		else if (user.getEmpRole().equals("Staff")) {
@@ -38,10 +39,11 @@ public class EmployeeController {
 			ctx.sessionAttribute("ID", user.getEmpId());
 			ctx.json("Wow quite Impressive");
 		}
+		System.out.println("Welcome to the Session " + ctx.sessionAttributeMap());
 	};
 	public Handler logoutEmployee = ctx -> {
-		ctx.sessionAttribute("ID", -1);
-		ctx.redirect("/index.html");
+		ctx.req.getSession().invalidate();
+		System.out.println("Goodbye Session " + ctx.sessionAttributeMap());
 	};
 	
 }
