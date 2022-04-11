@@ -6,20 +6,20 @@ public class ExpenseRequest {
 	int reqCost;
 	String reqTitle;
 	String reqDesc;
-	boolean reqStatus;
+	int reqStatus;
 	
 	//Constructors
 	public ExpenseRequest() {
 		super();
 	}
-	public ExpenseRequest(int reqId, boolean reqStatus, String reqTitle, String reqDate) {
+	public ExpenseRequest(int reqId, int reqStatus, String reqTitle, String reqDate) {
 		super();
 		this.reqId = reqId;
 		this.reqStatus = reqStatus;
 		this.reqTitle = reqTitle;
 		this.reqDate = reqDate;
 	}
-	public ExpenseRequest(int reqId, String reqDate, int reqCost, String reqTitle, String reqDesc, boolean reqStatus) {
+	public ExpenseRequest(int reqId, String reqDate, int reqCost, String reqTitle, String reqDesc, int reqStatus) {
 		super();
 		this.reqId = reqId;
 		this.reqDate = reqDate;
@@ -45,7 +45,7 @@ public class ExpenseRequest {
 	public String getReqDesc() {
 		return reqDesc;
 	}
-	public boolean getReqStatus() {
+	public int getReqStatus() {
 		return reqStatus;
 	}
 	
@@ -65,7 +65,7 @@ public class ExpenseRequest {
 	public void setReqDesc(String reqDesc) {
 		this.reqDesc = reqDesc;
 	}
-	public void setReqStatus(boolean reqStatus) {
+	public void setReqStatus(int reqStatus) {
 		this.reqStatus = reqStatus;
 	}
 	

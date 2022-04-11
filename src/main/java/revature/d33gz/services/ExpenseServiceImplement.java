@@ -24,4 +24,7 @@ public class ExpenseServiceImplement implements ExpenseService {
 	public ExpenseRequest reviewExpense(int requestId) {
 		return this.expdao.reviewExpense(requestId);
 	}
+	public boolean updateExpense(int requestId, int requestStatus) {
+		return this.expdao.updateExpense(requestId, requestStatus);
+	}
 }

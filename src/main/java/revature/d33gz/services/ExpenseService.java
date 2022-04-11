@@ -9,4 +9,5 @@ public interface ExpenseService {
 	void newExpenseRequest(ExpenseRequest expReq, int requesterId);
 	ArrayList<ExpenseRequest> getAllExpenses();
 	ExpenseRequest reviewExpense(int requestId);
+	boolean updateExpense(int updateId, int updateStatus);
 }

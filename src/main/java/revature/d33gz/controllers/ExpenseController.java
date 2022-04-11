@@ -38,4 +38,11 @@ public class ExpenseController {
 		ctx.json(this.expserv.reviewExpense(requestId));
 	};
 
+	public Handler updateExpense = ctx -> {
+		ExpenseRequest expenseToUpdate = ctx.bodyAsClass(ExpenseRequest.class);
+		int updateId = expenseToUpdate.getReqId();
+		int updateStatus = expenseToUpdate.getReqStatus();
+		boolean ok = this.expserv.updateExpense(updateId, updateStatus);
+		ctx.json(ok);
+	};
 }

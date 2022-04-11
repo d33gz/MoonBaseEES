@@ -9,4 +9,5 @@ public interface ExpenseDAO {
 	void newExpenseRequest(ExpenseRequest expReq, int requesterId);
 	ArrayList<ExpenseRequest> getAllExpenses();
 	ExpenseRequest reviewExpense(int requestId);
+	boolean updateExpense(int requestId, int requestStatus);
 }

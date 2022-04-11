@@ -34,6 +34,5 @@ setExpenseToReview = async (expenseId) => {
 		body: JSON.stringify(request)
 	});
 	let result = await response.text();
-	alert("Well done! " + result);
 	window.location.href = "../pages/reviewExpense.html";
 };
