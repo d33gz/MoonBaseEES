@@ -20,7 +20,6 @@ public class ExpenseController {
 		int requesterId = ctx.sessionAttribute("ID");
 		ExpenseRequest muhExpense = ctx.bodyAsClass(ExpenseRequest.class);
 		this.expserv.newExpenseRequest(muhExpense, requesterId);
-		ctx.result("good job!");
 	};
 	
 	public Handler getAllExpenses = ctx -> {
