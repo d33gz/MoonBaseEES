@@ -1,6 +1,6 @@
 getMyEmployees = () => {
 	alert('Fetching the Employees');
-	const getUrl = "http://localhost:1969/allEmployees";
+	const getUrl = 'http://localhost:1969/allEmployees';
 	fetch(getUrl)
 		.then(response => response.json())
 		.then(json => displayEmployees(json))

@@ -20,7 +20,6 @@ public class EmployeeController {
 	};
 	
 	public Handler getName = ctx -> {
-		System.out.println("okay in the handler\n" + ctx.sessionAttributeMap());
 		String username = ctx.sessionAttribute("username");
 		ctx.json(username);
 	};
@@ -39,5 +38,11 @@ public class EmployeeController {
 			ctx.sessionAttribute("ID", user.getEmpId());
 			ctx.json("Wow quite Impressive");
 		}
+		System.out.println("Welcome to the Session " + ctx.sessionAttributeMap());
 	};
+	public Handler logoutEmployee = ctx -> {
+		ctx.req.getSession().invalidate();
+		System.out.println("Goodbye Session " + ctx.sessionAttributeMap());
+	};
+	
 }

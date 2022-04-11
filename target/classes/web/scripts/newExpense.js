@@ -1,10 +1,9 @@
 callNewExpense = async (reqDate, reqTitle, reqDesc, reqCost) => {
-	alert("Getting somewhere...");
 	let newExpense = {
-		requestDate: reqDate,
-		requestTitle: reqTitle,
-		requestDescription: reqDesc,
-		requestCost: reqCost
+		reqDate: reqDate,
+		reqTitle: reqTitle,
+		reqDesc: reqDesc,
+		reqCost: reqCost
 	};
 	let response = await fetch('http://localhost:1969/newExpense', {
 		method: 'POST',
@@ -22,7 +21,6 @@ newExpenseRequest = () => {
 	let reqTitle = document.getElementById('requestTitle').value;
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
-	alert('inputting!!!');
 	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
 };
 
