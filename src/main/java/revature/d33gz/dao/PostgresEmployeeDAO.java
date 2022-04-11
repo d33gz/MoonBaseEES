@@ -15,6 +15,7 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 	PreparedStatement ps;
 	ResultSet rs;
 	String selectAllEmployees = "SELECT * FROM employees";
+	String selectEmployeeName = "SELECT employee_name FROM employees WHERE employee_id=?";
 	
 	public ArrayList<Employee> getAllEmployees() {
 		ArrayList<Employee> empList = new ArrayList<Employee>();
@@ -39,8 +40,8 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 		return empList;
 	};
 	
-	public boolean loginEmployee(String loginName, String loginPass) {
-		boolean match = false;
+	public Employee loginEmployee(String loginName, String loginPass) {
+		Employee user = new Employee();
 		try (Connection conn = ConnectionUtility.createConnection();) {
 			ps = conn.prepareStatement(selectAllEmployees);
 			rs = ps.executeQuery();
@@ -48,7 +49,9 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 				String empName = rs.getString("employee_name");
 				String empPass = rs.getString("employee_passsword");
 				if (empName.equals(loginName) && empPass.equals(loginPass)) {
-					match = true;
+					user.setEmpId(rs.getInt("employee_id"));
+					user.setEmpRole(rs.getString("employee_role"));
+					user.setEmpName(loginName);
 					break;
 				}
 			}
@@ -57,6 +60,6 @@ public class PostgresEmployeeDAO implements EmployeeDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return match;
+		return user;
 	}
 }

@@ -19,12 +19,25 @@ public class EmployeeController {
 		ctx.json(this.empdao.getAllEmployees());
 	};
 	
+	public Handler getName = ctx -> {
+		System.out.println("okay in the handler\n" + ctx.sessionAttributeMap());
+		String username = ctx.sessionAttribute("username");
+		ctx.json(username);
+	};
+	
 	public Handler loginEmployee = ctx -> {
-		Employee muhInputs = ctx.bodyAsClass(Employee.class);
-		boolean what = this.empserv.loginEmployee(muhInputs);
-		if (!what)
+		Employee inputs = ctx.bodyAsClass(Employee.class);
+		Employee user = this.empserv.loginEmployee(inputs);
+		if (user.getEmpId() == -1)
 			ctx.json("Bad Bad not Good");
-		else
+		else if (user.getEmpRole().equals("Staff")) {
+			ctx.sessionAttribute("username", user.getEmpName());
+			ctx.sessionAttribute("ID", user.getEmpId());
 			ctx.json("Good Good not Bad");
+		} else if (user.getEmpRole().equals("Manager")) {
+			ctx.sessionAttribute("username", user.getEmpName());
+			ctx.sessionAttribute("ID", user.getEmpId());
+			ctx.json("Wow quite Impressive");
+		}
 	};
 }
