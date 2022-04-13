@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon Base Employee Expense System - Client</title>
+    <link rel="stylesheet" href="../styles/universalStyle.css"/>
+    <link rel="stylesheet" href="../styles/newRequestStyle.css"/>
+  </head>
+  <body>
+    <div id="content-title">
+      <h3>The Doctor</h3>
+    </div>
+    <div id="content-box">
+      <div id="request-box">
+        <span>Today's Date is 02/24/2086</span>
+          <form id="new-request-form" onsubmit="goodRequest()">
+            <div id="form-column-left">
+              <label for="requestTitle">Request Title</label><br>
+              <input id="requestTitle" name="requestTitle" type="text" size="35"/><br>
+              <label for="requestCost">Moon Token Cost</label><br>
+              <input id="requestCost" name="requestCost" type="number"/><br><br>
+              <input id="submitRequest-button" type="submit" value="Submit your Request"/>
+            </div>
+            <div id="form-column-right">
+              <label for="requestDescription">Request Description</label><br>
+              <textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40"></textarea><br>
+              <p>{{characterCount}}</p>
+            </div>
+          </form>
+        
+      </div>
+      <div id="buttons-newRequest">
+        <div id="button-container-newRequest">
+          <a href="./employeePage.html"><button id="back-button" name="back" type="submit">Back</button></a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function goodRequest() {
+        alert("Your Expense Request will be processed in due time.");
+      };
+    </script>
+  </body>
+</html>

@@ -1,7 +1,6 @@
 var responseId;
 
 getExpenseToReview = async () => {
-	alert("getting ma expense");
 	let response = await fetch('http://localhost:1969/reviewExpense', {
 		method: 'POST',
 		headers: {
@@ -30,9 +29,8 @@ updateExpense = async (updateStatus) => {
 		reqId: responseId,
 		reqStatus: updateStatus,
 	};
-	alert("updating ma expense");
 	let response = await fetch('http://localhost:1969/updateExpense', {
-		method: 'POST',
+		method: 'PUT',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
 		},

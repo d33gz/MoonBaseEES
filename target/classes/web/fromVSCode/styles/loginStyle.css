@@ -1,0 +1,66 @@
+#login-box {
+  background-color: black;
+  border-color: gray;
+  border-style: solid;
+  border-width: 12px;
+  margin-top: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 3%;
+  text-align: left;
+  font-size: 1.8vw;
+}
+
+input {
+  border-color: grey;
+  border-style: solid;
+  border-width: 6px;
+  font-size: 80%;
+}
+
+#button-container-login-left {
+  background-color: black;
+  border-color: gray;
+  border-style: solid;
+  border-width: 6px;
+  margin-left: 30%;
+  padding: 2%;
+  text-align: center; 
+  display: inline-block;
+  max-height: 30px;
+  max-width: 130px;
+  position: absolute;
+}
+
+#button-container-login-right {
+  background-color: black;
+  border-color: gray;
+  border-style: solid;
+  border-width: 6px;
+  margin-left: 58%;
+  padding: 2%;
+  text-align: center;
+  display: inline-block;
+  max-height: 30px;
+  max-width: 100px;
+  position: absolute;
+}
+
+#login-button, #login-back-button {
+  background-color: black;
+  border-color: black;
+  color: white;
+  padding: 0%, 2%, 2%, 2%;
+  font-family: Courier, monospace;
+  font-size: 2vw;
+  font-weight: bold;
+}
+
+#login-button:hover, #login-back-button:hover {
+  font-style: italic;
+}
+
+#login-button:active, #login-back-button:active {
+  color: black;
+  background-color: white;
+}

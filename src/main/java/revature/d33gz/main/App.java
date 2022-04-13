@@ -36,7 +36,7 @@ public class App {
 		app.get("/allExpenses", expenseController.getAllExpenses);
 		app.post("/setExpense", expenseController.setExpense);
 		app.post("/reviewExpense", expenseController.reviewExpense);
-		app.post("/updateExpense", expenseController.updateExpense);
+		app.put("/updateExpense", expenseController.updateExpense);
 		
 		//Starting our App
 		app.start(1969);
