@@ -21,6 +21,7 @@ newExpenseRequest = () => {
 	let reqTitle = document.getElementById('requestTitle').value;
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
+	console.log("my values" + reqDate, reqTitle, reqDesc);
 	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
 };
 

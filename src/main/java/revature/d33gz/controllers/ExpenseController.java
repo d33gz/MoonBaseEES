@@ -19,6 +19,9 @@ public class ExpenseController {
 	public Handler newExpenseRequest = ctx -> {
 		int requesterId = ctx.sessionAttribute("ID");
 		ExpenseRequest muhExpense = ctx.bodyAsClass(ExpenseRequest.class);
+		System.out.println(ctx);
+		System.out.println(ctx.body());
+		System.out.println(ctx.bodyAsClass(ExpenseRequest.class));
 		this.expserv.newExpenseRequest(muhExpense, requesterId);
 	};
 	
