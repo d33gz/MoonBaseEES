@@ -1,4 +1,4 @@
-package EndToEndTests;
+package revature.d33z.e2eTests;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
