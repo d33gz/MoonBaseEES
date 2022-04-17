@@ -6,7 +6,7 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
 @CucumberOptions(
-	features = "src/main/resources/features",
+	features = "src/test/resources/features",
 	glue = {"revature.d33gz.e2eTests"}
 )
 @RunWith(Cucumber.class)

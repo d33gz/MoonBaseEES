@@ -23,7 +23,7 @@ img {
   height: auto;
 }
 
-#employee-box {
+.employee-box {
   display: inline-block;
   background-color: black;
   border-color: gray;
