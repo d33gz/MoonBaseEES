@@ -1,9 +1,11 @@
 package revature.d33z.e2eTests;
 
+import org.junit.jupiter.api.BeforeAll;
+//import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import io.cucumber.java.BeforeAll;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,9 +17,10 @@ public class LoginSteps {
 	
 	@BeforeAll
 	public static void launchApp() {
-		  System.setProperty("webdriver.gecko.driver", "C:\\Users\\hendo\\Documents\\Revature\\geckodriver.exe");
-		  driver = new FirefoxDriver();
-		  App.main(null);
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\hendo\\Documents\\Revature//geckodriver.exe");
+		driver = new FirefoxDriver();
+		App.main(null);
+		driver.get("http://localhost:1969/");
 	}
 	
 	@Given("User is on Home Page")
