@@ -21,17 +21,16 @@ newExpenseRequest = () => {
 	let reqTitle = document.getElementById('requestTitle').value;
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
-	console.log("my values" + reqDate, reqTitle, reqDesc);
 	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
 };
 
 spaceDate = () => {
 	let newExpenseElement = document.getElementById('generatedList-newExpense');
 	const date = new Date();
-	let currentDay = date.getDay();
-	let currentMonth = date.getMonth();
+	let currentDay = date.getDate();
+	let currentMonth = date.getMonth()+1;
 	let spaceYear = date.getFullYear() + 64;
-	let spaceDate = `${currentDay}/${currentMonth}/${spaceYear}`;
+	let spaceDate = `${currentMonth}/${currentDay}/${spaceYear}`;
 	let generatedDate = document.createElement('li');
 	generatedDate.setAttribute('id', 'requestDate');
 	generatedDate.innerHTML = spaceDate;

@@ -10,7 +10,31 @@ getAllExpenses = () => {
 		for (i = 0; i < response.length; i++) {
 			let expenseItem = document.createElement('li');
 			expenseItem.setAttribute('id', `${response[i].reqId}`);
-			expenseItem.innerHTML = response[i].reqStatus + ' ' + response[i].reqTitle + ' ' + response[i].reqDate + '<button type="button" onclick="reviewExpense(this)">Check Expense</button>';
+			if (response[i].reqStatus === 0) {
+				expenseItem.innerHTML = `
+					<img src="../images/icons/ToBeDetermined.png"/>
+					<span id="inner-text">${response[i].reqDate}: ${response[i].reqTitle}</span>
+					<button id="last-row" onclick="reviewExpense(this)">
+						<img src="../images/icons/ViewExpense.png"/>
+					</button>
+				`
+			} else if (response[i].reqStatus === 1) {
+				expenseItem.innerHTML = `
+					<img src="../images/icons/Approved.png"/>
+					<span id="inner-text">${response[i].reqDate}: ${response[i].reqTitle}</span>
+					<button id="last-row" onclick="reviewExpense(this)">
+						<img src="../images/icons/ViewExpense.png"/>
+					</button>
+				`
+			} else {
+				expenseItem.innerHTML = `
+					<img src="../images/icons/Denied.png"/>
+					<span id="inner-text">${response[i].reqDate}: ${response[i].reqTitle}</span>
+					<button id="last-row" onclick="reviewExpense(this)">
+						<img src="../images/icons/ViewExpense.png"/>
+					</button>
+				`
+			}
 			expensesList.appendChild(expenseItem);
 		};
 		expensesSection.appendChild(expensesList);
@@ -18,8 +42,11 @@ getAllExpenses = () => {
 };
 
 reviewExpense = (button) => {
+	console.log("You got me " + button);
 	expenseId = button.parentElement.id;
+	console.log("Here's your ID " + expenseId);
 	setExpenseToReview(expenseId);
+	alert("Hammer Time!")
 };
 
 setExpenseToReview = async (expenseId) => {

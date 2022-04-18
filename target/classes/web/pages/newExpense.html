@@ -1,23 +1,41 @@
 <!HTML>
 <html>
 	<head>
-		<title>Testing MoonBase Database</title>
-		<!--<link rel="stylesheet" href="styles/style.css"/>-->
+		<meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <title>Moon Base Employee Expense System</title>
+	    <link rel="stylesheet" href="../styles/universalStyle.css"/>
+	    <link rel="stylesheet" href="../styles/newRequestStyle.css"/>
+		<script src="../scripts/userScript.js"></script>
 		<script src="../scripts/newExpense.js"></script>
-	<body onload="spaceDate()">
-		<h1>So ya want ta make a new Request, huh?</h1> 
-		<ul id="generatedList-newExpense">
-		</ul>
-		<form onsubmit="newExpenseRequest()">
-			<label for="requestTitle">Expense Request Title:</label>
-			<input id="requestTitle" name="requestTitle" type="text"><br>
-			<label for="requestDescription">Expense Request Description:</label>
-			<input id="requestDescription" name="requestDescription" type="text"><br>
-			<label for="requestCost">Expense Request Cost:</label>
-			<input id="requestCost" name="requestCost" type="number"><br>
-			<input type="submit" value="Submit your Request"/>
-		</form>
-		<a href="./employeePage.html"><button type="button">Back</button></a>
-		<iframe name="response-frame"
-        style="width:20%;height:5%;border:2px solid black;"></iframe>
-</body>
+	</head>
+	<body onload="spaceDate(), getName()">
+		<div id="content-title">
+      		<h3 id="userName"></h3>
+    	</div>
+    	<div id="content-box">
+      		<div id="request-box">
+        		<ul id="generatedList-newExpense"></ul>
+          		<form id="new-request-form" onsubmit="newExpenseRequest()">
+	            	<div id="form-column-left">
+	              		<label for="requestTitle">Request Title</label><br>
+	              		<input id="requestTitle" name="requestTitle" type="text" size="35"/><br>
+	              		<label for="requestCost">Moon Token Cost</label><br>
+	              		<input id="requestCost" name="requestCost" type="number"/><br><br>
+	              		<input id="submitRequest-button" type="submit" value="Submit your Request"/>
+	            	</div>
+	            	<div id="form-column-right">
+	              		<label for="requestDescription">Request Description</label><br>
+	              		<textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40"></textarea><br>
+	            	</div>
+          		</form>
+	      	</div>
+      		<div id="buttons-newRequest">
+        		<div id="button-container-newRequest">
+          			<a href="./employeePage.html"><button id="back-button" name="back" type="submit">Back</button></a>
+        		</div>
+      		</div>
+    	</div>
+	</body>
+</html>

@@ -12,8 +12,8 @@ import revature.d33gz.utilities.ConnectionUtility;
 public class PostgresExpenseDAO implements ExpenseDAO {
 	PreparedStatement ps;
 	ResultSet rs;
-	String selectUserExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE id_of_requester=?";
-	String selectAllExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests";
+	String selectUserExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE id_of_requester=? ORDER BY request_date DESC";
+	String selectAllExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests ORDER BY request_date DESC";
 	String selectExpense = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE request_id=?";
 	String updateExpense = "UPDATE expense_requests SET request_status=? WHERE request_id=?";
 	
@@ -51,11 +51,13 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 				String reqDate = rs.getString("request_date");
 				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate);
 				expReqList.add(expReq);
+				System.out.println("A Request " + expReq);
 			}
 			rs.close();ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
 		return expReqList;
 	};
 	public ArrayList<ExpenseRequest> getAllExpenses() {
