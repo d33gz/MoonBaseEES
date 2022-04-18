@@ -11,9 +11,9 @@ callLogin = async (nameInput, passInput) => {
 		body: JSON.stringify(user)
 	});
 	let result = await response.text();
-	if (result === "Good Good not Bad")
+	if (result === "Good")
 		window.location.href = "../pages/employeePage.html";
-	if (result === "Wow quite Impressive")
+	if (result === "Wow")
 		window.location.href = "../pages/managerPage.html";
 };
 

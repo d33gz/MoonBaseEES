@@ -16,9 +16,11 @@ validateExpense = () => {
 	let deny = document.getElementById("denyRadio");
 	let updateStatus = 0;
 	if (approve.checked) {
+		alert("Request Approved!");
 		updateStatus = approve.value;
 		updateExpense(updateStatus);
 	} else if (deny.checked) {
+		alert("Request Denied!");
 		updateStatus = deny.value;
 		updateExpense(updateStatus);	
 	} else alert("You need to Approve or Deny the request.");
@@ -42,40 +44,46 @@ updateExpense = async (updateStatus) => {
 
 displayExpense = (response) => {
 	responseId = response.reqId;
-	const expenseSection = document.getElementById('review-request-form');
-	let expenseItem = document.createElement('div');
+	console.log("What we got " + response);
+	console.log("What we got Title " + response.reqTitle);
+	console.log("What we got Date " + response.reqDate);
+	console.log("What we got Cost " + response.reqCost);
+	console.log("What we got Desc " + response.reqDesc);
+	const expenseSection = document.getElementById('request-box');
 	if (response.reqStatus == 0) {
-		console.log("What is wrong with this? " + response);
-		expenseItem.innerHTML = `
-			<div id="form-column-left">
-            	<label for="requestTitle">Request Title</label><br>
-              	<input id="requestTitle" name="requestTitle" type="text" size="35" value="${response.reqTitle}" disabled/><br>
-              	<label for="requestCost">Moon Token Cost</label><br>
-              	<input id="requestCost" name="requestCost" type="number" value="${response.reqCost}" disabled/><br><br>
-              	<label for="trueRadio">Approve</label><input type="radio" id="approveRadio" name="status" value=1>
-		        <label for="falseRadio">Deny</label><input type="radio" id="denyRadio" name="status" value=-1><br>
-		        <button type="submit" onclick=(validateExpense()) value="Commit your Review">Commit Status</button>
-            </div>
-            <div id="form-column-right">
-              <label for="requestDescription">Request Description</label><br>
-              <textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40" value="${response.reqDesc}" disabled></textarea><br>
-            </div>
+		expenseSection.innerHTML = `
+			<ul><li>${response.reqDate}</li</ul>
+          	<form id="review-request-form" onsubmit="goodRequest()">
+				<div id="form-column-left">
+		        	<label for="requestTitle">Request Title</label><br>
+		        	<input id="requestTitle" name="requestTitle" type="text" size="35" value="${response.reqTitle}" disabled/><br>
+		        	<label for="requestCost">Moon Token Cost</label><br>
+		        	<input id="requestCost" name="requestCost" type="number" value="${response.reqCost}" disabled/><br><br>
+		        	<label for="trueRadio">Approve</label><input type="radio" id="approveRadio" name="status" value=1>
+			    	<label for="falseRadio">Deny</label><input type="radio" id="denyRadio" name="status" value=-1><br>
+			    	<button type="submit" onclick=(validateExpense()) value="Commit your Review">Commit Status</button>
+		        </div>
+		        <div id="form-column-right">
+		        	<label for="requestDescription">Request Description</label><br>
+		        	<textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40" disabled>${response.reqDesc}</textarea><br>
+		    	</div>
+			</form>
 		`
-		console.log("What does my HTML look like?? " + expenseItem)
-		expenseSection.appendChild(expenseItem);
 	} else if (response.reqStatus == -1 ||response.reqStatus == 1) {
-		expenseItem.innerHTML = `
-			<div id="form-column-left">
-        	   	<label for="requestTitle">Request Title</label><br>
-              	<input id="requestTitle" name="requestTitle" type="text" size="35" value="${response.reqTitle}" disabled/><br>
-              	<label for="requestCost">Moon Token Cost</label><br>
-              	<input id="requestCost" name="requestCost" type="number" value="${response.reqCost}" disabled/><br><br>
-            </div>
-            <div id="form-column-right">
-              <label for="requestDescription">Request Description</label><br>
-              <textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40" value="${response.reqDesc}" disabled></textarea><br>
-            </div>
+		expenseSection.innerHTML = `
+			<ul><li>${response.reqDate}</li</ul>
+          	<form id="review-request-form" onsubmit="goodRequest()">
+				<div id="form-column-left">
+		        	<label for="requestTitle">Request Title</label><br>
+		        	<input id="requestTitle" name="requestTitle" type="text" size="35" value="${response.reqTitle}" disabled/><br>
+		        	<label for="requestCost">Moon Token Cost</label><br>
+		        	<input id="requestCost" name="requestCost" type="number" value="${response.reqCost}" disabled/><br><br>
+		        </div>
+		        <div id="form-column-right">
+		        	<label for="requestDescription">Request Description</label><br>
+		        	<textarea id="requestDescription" name="requestDescription" type="textarea" rows="10" cols="40" disabled>${response.reqDesc}</textarea><br>
+		    	</div>
+			</form>
 		`
-		expenseSection.appendChild(expenseItem);
 	}
 };

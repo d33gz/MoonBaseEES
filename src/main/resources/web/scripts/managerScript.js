@@ -42,24 +42,20 @@ getAllExpenses = () => {
 };
 
 reviewExpense = (button) => {
-	console.log("You got me " + button);
 	expenseId = button.parentElement.id;
-	console.log("Here's your ID " + expenseId);
 	setExpenseToReview(expenseId);
-	alert("Hammer Time!")
 };
 
 setExpenseToReview = async (expenseId) => {
 	let request = {
 		reqId: expenseId
 	};
-	let response = await fetch('http://localhost:1969/setExpense', {
+	await fetch('http://localhost:1969/setExpense', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json;charset=utf-8'
 		},
 		body: JSON.stringify(request)
 	});
-	let result = await response.text();
 	window.location.href = "../pages/reviewExpense.html";
 };

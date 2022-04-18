@@ -15,8 +15,8 @@ public class ExpenseServiceImplement implements ExpenseService {
 	public ArrayList<ExpenseRequest> getUserExpenses(int userId) {
 		return this.expdao.getUserExpenses(userId);
 	}
-	public void newExpenseRequest(ExpenseRequest expReq, int requesterId) {
-		this.expdao.newExpenseRequest(expReq, requesterId);
+	public boolean newExpenseRequest(ExpenseRequest expReq, int requesterId) {
+		return this.expdao.newExpenseRequest(expReq, requesterId);
 	}
 	public ArrayList<ExpenseRequest> getAllExpenses() {
 		return this.expdao.getAllExpenses();

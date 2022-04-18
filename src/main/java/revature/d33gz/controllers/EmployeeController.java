@@ -28,21 +28,19 @@ public class EmployeeController {
 		Employee inputs = ctx.bodyAsClass(Employee.class);
 		Employee user = this.empserv.loginEmployee(inputs);
 		if (user.getEmpId() == -1)
-			ctx.json("Bad Bad not Good");
+			ctx.json("Bad");
 		else if (user.getEmpRole().equals("Staff")) {
 			ctx.sessionAttribute("username", user.getEmpName());
 			ctx.sessionAttribute("ID", user.getEmpId());
-			ctx.json("Good Good not Bad");
+			ctx.json("Good");
 		} else if (user.getEmpRole().equals("Manager")) {
 			ctx.sessionAttribute("username", user.getEmpName());
 			ctx.sessionAttribute("ID", user.getEmpId());
-			ctx.json("Wow quite Impressive");
+			ctx.json("Wow");
 		}
-		System.out.println("Welcome to the Session " + ctx.sessionAttributeMap());
 	};
 	public Handler logoutEmployee = ctx -> {
 		ctx.req.getSession().invalidate();
-		System.out.println("Goodbye Session " + ctx.sessionAttributeMap());
 	};
 	
 }

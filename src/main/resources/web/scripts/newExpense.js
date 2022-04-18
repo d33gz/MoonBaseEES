@@ -12,8 +12,7 @@ callNewExpense = async (reqDate, reqTitle, reqDesc, reqCost) => {
 		},
 		body: JSON.stringify(newExpense)
 	});
-	let result = await response.text();
-	alert(result);
+	let result = await response.json();
 };
 
 newExpenseRequest = () => {
@@ -22,6 +21,8 @@ newExpenseRequest = () => {
 	let reqDesc = document.getElementById('requestDescription').value;
 	let reqCost = document.getElementById('requestCost').value;
 	callNewExpense(reqDate, reqTitle, reqDesc, reqCost);
+	window.location.href = "../pages/employeePage.html";
+	alert("Your Request has been received!");
 };
 
 spaceDate = () => {

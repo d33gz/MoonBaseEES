@@ -6,7 +6,7 @@ import revature.d33gz.entities.ExpenseRequest;
 
 public interface ExpenseService {
 	ArrayList<ExpenseRequest> getUserExpenses(int userId);
-	void newExpenseRequest(ExpenseRequest expReq, int requesterId);
+	boolean newExpenseRequest(ExpenseRequest expReq, int requesterId);
 	ArrayList<ExpenseRequest> getAllExpenses();
 	ExpenseRequest reviewExpense(int requestId);
 	boolean updateExpense(int updateId, int updateStatus);
