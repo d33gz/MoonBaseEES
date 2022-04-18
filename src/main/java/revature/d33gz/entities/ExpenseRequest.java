@@ -19,12 +19,13 @@ public class ExpenseRequest {
 		this.reqTitle = reqTitle;
 		this.reqDate = reqDate;
 	}
-	public ExpenseRequest(int reqId, int reqStatus, String reqTitle, String reqDate, String reqDesc) {
+	public ExpenseRequest(int reqId, int reqStatus, String reqTitle, String reqDate, int reqCost, String reqDesc) {
 		super();
 		this.reqId = reqId;
 		this.reqStatus = reqStatus;
 		this.reqTitle = reqTitle;
 		this.reqDate = reqDate;
+		this.reqCost = reqCost;
 		this.reqDesc = reqDesc;
 	}
 	public ExpenseRequest(int reqId, String reqDate, int reqCost, String reqTitle, String reqDesc, int reqStatus) {

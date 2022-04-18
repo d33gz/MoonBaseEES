@@ -14,7 +14,7 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 	ResultSet rs;
 	String selectUserExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests WHERE id_of_requester=? ORDER BY request_date DESC";
 	String selectAllExpenses = "SELECT request_id, request_status, request_title, request_date FROM expense_requests ORDER BY request_date DESC";
-	String selectExpense = "SELECT request_id, request_status, request_title, request_date, request_description FROM expense_requests WHERE request_id=?";
+	String selectExpense = "SELECT request_id, request_status, request_cost, request_title, request_date, request_description FROM expense_requests WHERE request_id=?";
 	String updateExpense = "UPDATE expense_requests SET request_status=? WHERE request_id=?";
 	
 	//Create
@@ -94,8 +94,9 @@ public class PostgresExpenseDAO implements ExpenseDAO {
 				int reqStatus = rs.getInt("request_status");
 				String reqTitle = rs.getString("request_title");
 				String reqDate = rs.getString("request_date");
+				int reqCost = rs.getInt("request_cost");
 				String reqDesc = rs.getString("request_description");
-				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate, reqDesc);
+				expReq = new ExpenseRequest(reqId, reqStatus, reqTitle, reqDate, reqCost, reqDesc);
 			}
 			rs.close();ps.close();
 		} catch (SQLException e) {
